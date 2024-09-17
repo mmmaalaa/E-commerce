@@ -1,0 +1,10 @@
+input{
+    width: 75% !important;
+}
+
+@media(max-width:768px){
+    input{
+        width: 85% !important;
+        
+    }
+}

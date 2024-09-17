@@ -1,0 +1,104 @@
+
+<section class="shadow bg-main-light p-2  rounded-4 my-5 ">
+    <h1 class="h2 text-main">Register Now:</h1>
+
+    <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+       
+        <div class="my-2">
+            <label for="name">name</label>
+            <input id="name" formControlName="name" class="form-control" type="text" >
+
+
+
+
+            @if (registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)){
+                <div class="alert alert-danger">
+                    @if (registerForm.get('name')?.getError('required')) {
+                        <p class="m-0">name is required.</p>
+                    }
+                    @if (registerForm.get('name')?.getError('minlength')) {
+                        <p class="m-0">name should be more than 3 chars.</p>
+                    }
+                    @if (registerForm.get('name')?.getError('maxlength')) {
+                        <p class="m-0">name should be less than 20 chars.</p>
+                    }
+                </div>
+            }
+
+        </div>
+
+        <div class="my-2">
+            <label for="email">email</label>
+            <input id="email" formControlName="email" class="form-control" type="email">
+
+            @if (registerForm.get('email')?.errors && registerForm.get('email')?.touched){
+                <div class="alert alert-danger">
+                    @if (registerForm.get('email')?.getError('required')) {
+                        <p class="m-0">email is required.</p>
+                    }
+                    @if (registerForm.get('email')?.getError('email')) {
+                        <p class="m-0">email should be valid.</p>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="my-2">
+            <label for="phone">phone</label>
+            <input id="phone" formControlName="phone" class="form-control" type="tel">
+
+            @if (registerForm.get('phone')?.errors && registerForm.get('phone')?.touched){
+                <div class="alert alert-danger">
+                    @if (registerForm.get('phone')?.getError('required')) {
+                        <p class="m-0">phone is required.</p>
+                    }
+                    @if (registerForm.get('phone')?.getError('pattern')) {
+                        <p class="m-0">phone should be egyption.</p>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="my-2">
+            <label for="password">password</label>
+            <input id="password" formControlName="password" class="form-control" type="password">
+
+            @if (registerForm.get('password')?.errors && registerForm.get('password')?.touched){
+                <div class="alert alert-danger">
+                    @if (registerForm.get('password')?.getError('required')) {
+                        <p class="m-0">password is required.</p>
+                    }
+                    @if (registerForm.get('password')?.getError('pattern')) {
+                        <p class="m-0">password not valid.</p>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="my-2">
+            <label for="rePassword">rePassword</label>
+            <input id="rePassword" formControlName="rePassword" class="form-control" type="password">
+
+            @if (registerForm.getError('missmatch') && registerForm.get('rePassword')?.touched){
+                <div class="alert alert-danger">
+                        <p class="m-0">pasword not match</p>
+                </div>
+            }
+        </div>
+
+        <button class="btn-main ms-auto d-block" [disabled]="registerForm.invalid">Submit
+            @if(isLoading){
+                <span><i class="fas fa-spin fa-spinner"></i></span>
+
+            }
+        </button>
+
+        @if(msgSucces){
+            <p class="text-center text-success fw-bold">{{msgSucces}}</p>
+        }
+
+        @if(errMsg){
+            <p class="text-center text-danger fw-bold">{{errMsg}}</p>
+        }
+    </form>
+</section>

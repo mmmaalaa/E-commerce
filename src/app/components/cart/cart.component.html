@@ -1,0 +1,43 @@
+<div class="my-5 pt-5">
+<section class="container-fluid px-4 pt-4 pb-1 rounded w-75 mx-auto shadow bg-main-light">
+    
+
+    <h1 class="text-center h2">{{"cart.Shop Cart" | translate}}</h1>
+
+    <div class="head-cart my-3">
+        <h3 class="h5 text-main mb-2 mt-3"> <span class="text-black"> {{"cart.Total Cart Price" | translate}}: </span>{{cartProducts.totalCartPrice | currency: 'GBP'}}</h3>
+
+        <button class="btn btn-danger" (click)="clearCart()">{{"cart.Clear Cart" | translate}}</button>
+    </div>
+
+    
+    @for (item of cartProducts.products; track item.product.id) {
+        <div class="row border-bottom mb-2">
+        <div class="col-md-1">
+            <div><img [src]="item.product.imageCover" class="w-100" [alt]="item.product.title"></div>
+        </div>
+        <div class="col-md-11">
+            <div>
+                <h3 class="h5 media-name w-100">{{item.product.title}}</h3>
+              
+                    <h3 class="h6 text-main">price: {{item.price | currency : 'GBP'}}</h3>
+                    <button class="remove p-1 mb-1 rounded border-0 btn-sm" (click)="removeItem(item.product.id)">
+                            <i class="fa-solid fa-trash me-1 removei"></i> 
+                            <span class="fw-medium text-white remove">{{"cart.Remove" | translate}}</span>
+                    </button>
+               
+                
+            </div>
+            <div class="count d-flex gap-2 align-items-center">
+                <span class="text-main cr" (click)="updateCount(item.product.id , item.count + 1)"><i class="fa-solid fa-circle-plus fa-lg "></i></span>
+                <span>{{item.count}}</span>
+                <span class="text-main cr" (click)="updateCount(item.product.id , item.count - 1)"><i class="fa-solid fa-circle-minus fa-lg text-main" ></i></span>
+            </div>
+        </div>
+    </div>
+    }
+
+    <button class="btn-main d-block ms-auto" [routerLink]="['/orders' , cartProducts._id]">{{"cart.Orders" | translate}}</button>
+    
+</section>
+</div>

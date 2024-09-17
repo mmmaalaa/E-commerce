@@ -1,0 +1,45 @@
+<section class="mt-5 pt-5" >
+    <h1 class="text-center mb-4">{{"address.shippingAddress" | translate}}</h1>
+
+    <form [formGroup]="orders" (ngSubmit)="ordersSubmit()" class="shadow rounded bg-main-light w-75 mx-auto p-4 mb-5" >
+        <div class=" mx-auto my-2">
+            <label for="details">{{"address.Details" | translate}}</label>
+            <textarea type="text" name="details" id="details" formControlName="details" class="form-control "></textarea>
+
+            @if(orders.get('details')?.errors && orders.get('details')?.touched ){
+                <p class="text-danger fw-bold">- Details is required</p>
+            }
+           
+        </div>
+
+        
+
+        <div class=" mx-auto my-2">
+            <label for="phone">{{"address.Phone" | translate}}</label>
+            <input type="tel" name="phone" id="phone" formControlName="phone" class="form-control ">
+
+            @if(orders.get('phone')?.errors && orders.get('phone')?.touched || orders.get('phone')?.dirty){
+                <div>
+                    @if(orders.get('phone')?.getError('required'))
+                    {<p class="text-danger fw-bold">- Phone is required</p>}
+                   
+                    @if(orders.get('phone')?.getError('pattern'))
+                    {<p class="text-danger fw-bold">- Phone number should be egyptian</p>}
+    
+                </div>
+            }
+           
+        </div>
+
+        <div class=" mx-auto my-2">
+            <label for="city">{{"address.City" | translate}}</label>
+            <input type="text" name="city" id="city" formControlName="city" class="form-control ">
+
+            @if(orders.get('city')?.errors && orders.get('city')?.touched ){
+                <p class="text-danger fw-bold">- City is required</p>
+            }
+        </div>
+
+        <button class="btn-main" type="submit" [disabled]="orders.invalid">{{"address.Check Out" | translate}}</button>
+    </form>
+</section>

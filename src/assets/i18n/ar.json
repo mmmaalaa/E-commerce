@@ -1,0 +1,58 @@
+{
+    "navbar":{
+      "Home" : "الرئيسية",
+      "Products" : "المنتجات",
+      "Categories" : "الأقسام" , 
+      "Brands" : "العلامات التجارية",
+      "WishList" : "المفضلة",
+      "SignOut" : "تسجيل خروج",
+      "Lang" : "غ"
+      
+
+    },
+
+    "home":{
+      "Popular Categories": "الأقسام الشائعة",
+      "Popular Products":"المنتجات الشائعة"
+    },
+
+    "footer":{
+      "Get The FreshCart App": "احصل علي تطبيق فريش كارت",
+      "We Will Send You a Link, Open it on Your Phone to download the app":"نحن سوف نرسل لك رابط افتحه علي هاتفك لتحميل التطبيق"
+      ,"Share App Link":"مشاركة رابط التطبيق",
+      "Payment partners":"شركاء الدفع",
+      "Get Deliveries with FreshCart":"احصل على التوصيلات مع فريش كارت"
+    },
+
+    "cat":{
+      "All Categories" : "جميع الأقسام"
+    },
+
+    "wishlist":{
+      "My wishlist":"المفضلة لدي",
+      "Add To Cart": "اضافة الي العربة",
+      "Remove": "حذف"
+    },
+
+     "cart":{
+      "Shop Cart":"عربة المشتريات",
+      "Clear Cart" : "اخلاء العربة",
+      "Total Cart Price":"سعر العربة كاملا",
+      "Remove":"حذف",
+      "Orders":"شراء"
+    },
+
+    "address":{
+      "shippingAddress": "عنوان الشحن",
+      "Details":"التفاصيل",
+      "Phone":"الهاتف",
+      "City": "المدينة",
+      "Check Out":"دفع"
+    },
+    "orders":
+    {
+      "Payment successful":"تم الدفع بنجاح"
+    }
+
+
+}

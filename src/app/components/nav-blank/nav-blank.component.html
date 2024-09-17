@@ -1,0 +1,82 @@
+<nav #nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="home">
+        <img src="../../../assets/images/freshcart-logo.svg" alt="logo freshcart svg">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+        <ul class="navbar-nav  mb-2 mb-lg-0">
+         
+          <li class="nav-item my-2 ">
+            <a class="nav-link d-inline p-2  "  routerLink="home" routerLinkActive="active-link">{{ 'navbar.Home' | translate}} </a>
+          </li>
+          <li class="nav-item my-2 ">
+            <a class="nav-link d-inline p-2 "  routerLink="products" routerLinkActive="active-link">{{ 'navbar.Products' | translate}}</a>
+          </li>
+          <li class="nav-item  my-2 ">
+            <a class="nav-link d-inline p-2 "  routerLink="categories" routerLinkActive="active-link">{{ 'navbar.Categories' | translate}}</a>
+          </li>
+          <li class="nav-item  my-2 ">
+            <a class="nav-link d-inline p-2 "  routerLink="brands" routerLinkActive="active-link">{{ 'navbar.Brands' | translate}}</a>
+          </li>
+          <li class="nav-item  my-2 ">
+            <a class="nav-link d-inline p-2 "  routerLink="wishlist" routerLinkActive="active-link">{{ 'navbar.WishList' | translate}}</a>
+          </li>
+        </ul>
+       
+
+
+        <ul class="navbar-nav  mb-2 mb-lg-0">
+         
+          
+
+         <div class="d-flex ">
+
+
+          <li class="nav-item my-2 ">
+            <a class="nav-link d-inline p-2 position-relative "  routerLink="cart" routerLinkActive="active-link">
+              <i class="fa-solid fa-cart-shopping fa-xl"></i>
+              <span class="position-absolute badge bg-info small">{{countNum}}</span>
+            </a>
+          </li>
+
+           <li class="nav-item mx-2 mx-lg-0">
+          <a class="nav-link"><i class="fa-brands fa-facebook"></i></a>
+        </li>
+        <li class="nav-item mx-2 mx-lg-0">
+            <a class="nav-link"><i class="fa-brands fa-twitter"></i></a>
+          </li>
+          <li class="nav-item mx-2 mx-lg-0">
+            <a class="nav-link"><i class="fa-brands fa-instagram"></i></a>
+          </li>
+          <li class="nav-item mx-2 mx-lg-0">
+            <a class="nav-link"><i class="fa-brands fa-linkedin"></i></a>
+          </li>
+          <li class="nav-item mx-2 mx-lg-0">
+            <a class="nav-link"><i class="fa-brands fa-youtube"></i></a>
+          </li>
+
+          <li class="nav-item dropdown  mx-2 mx-lg-0">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             <!-- {{ 'navbar.Lang' | translate}} --><i class="fa-solid fa-globe"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li [class.bg-info]="_TranslateService.currentLang == 'en' " (click)="change('en')"><a class="dropdown-item cr">EN</a></li>
+              <li [class.bg-info]="_TranslateService.currentLang == 'ar' " (click)="change('ar')"><a class="dropdown-item cr">AR</a></li>
+              
+            </ul>
+          </li>
+        </div>  
+       
+           
+              <li class="nav-item">
+                <a class="nav-link cr" (click)="logout()">{{ 'navbar.SignOut' | translate}}</a>
+              </li>
+           
+          </ul>
+         
+      </div>
+    </div>
+  </nav>

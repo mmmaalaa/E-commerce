@@ -1,0 +1,29 @@
+<section class="container mt-5 pt-5">
+    <h1 class="text-center mb-5 text-main">{{"cat.All Categories"| translate}}</h1>
+    <div class="row g-4 mb-5">
+       @for (cat of productsCat; track $index) {
+        <div class="col-sm-6 col-lg-4 col-xl-3 ">
+            <div class="product p-2 cr " (click)="getCat(cat._id)">
+                <img [src]="cat.image" class="w-100 rounded" height="300px" [alt]="cat.name">
+                <h3 class="h4 text-center text-main mt-3">{{cat.name}}</h3>
+            </div>
+           
+        </div>
+       }
+    </div>
+
+   
+        <div class="container mb-4">
+            <div class="row g-3 justify-content-center">
+                @for (sup of sups; track $index) {
+                <div class="col-md-4">
+                    <div class="border shadow bg-main-light p-3 text-center rounded">
+                        <h5 class="">{{sup.name}}</h5>
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+   
+   
+</section>

@@ -1,0 +1,20 @@
+input{
+    width: 50% !important;
+}
+
+.heart{
+    left: 15px;
+    top: 25px;
+}
+
+@media(max-width:768px){
+    input{
+        width: 85% !important;
+        
+    }
+}
+@media(max-width:640px){
+    .main-slider img{
+        height: 25vh;
+    }
+}

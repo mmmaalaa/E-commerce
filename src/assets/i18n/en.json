@@ -1,0 +1,56 @@
+{
+    "navbar":{
+      "Home" : "Home",
+      "Products" : "Products",
+      "Categories" : "Categories" , 
+      "Brands" : "Brands",
+      "WishList" : "WishList",
+      "SignOut" : "SignOut",
+      "Lang" : "Lang"
+    },
+
+    "home" :{
+      "Popular Categories": "Popular Categories",
+      "Popular Products":"Popular Products"
+    },
+
+    "footer":{
+      "Get The FreshCart App":"Get The FreshCart App"
+      ,"We Will Send You a Link, Open it on Your Phone to download the app":"We Will Send You a Link, Open it on Your Phone to download the app",
+      "Share App Link":"Share App Link",
+      "Payment partners":"Payment partners",
+      "Get Deliveries with FreshCart":"Get Deliveries with FreshCart"
+    },
+
+    "cat":{
+      "All Categories" : "All Categories"
+    },
+
+    "wishlist":{
+      "My wishlist": "My wishlist",
+      "Add To Cart": "Add To Cart",
+      "Remove": "Remove"
+    }
+
+    ,"cart":{
+      "Shop Cart":"Shop Cart",
+      "Clear Cart" : "Clear Cart",
+      "Total Cart Price":"Total Cart Price",
+      "Remove":"Remove",
+      "Orders":"Orders"
+    },
+
+    "address":{
+      "shippingAddress": "shippingAddress",
+      "Details":"Details",
+      "Phone":"Phone",
+      "City": "City",
+      "Check Out":"Check Out"
+    }
+
+    ,"orders":
+    {
+      "Payment successful":"Payment successful"
+    }
+
+}
