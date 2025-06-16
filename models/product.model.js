@@ -94,11 +94,26 @@ productSchema.pre("findOneAndUpdate", function (next) {
 });
 
 productSchema.pre(/^find/, function (next) {
-  this.populate({ path: "category", select: "name " })
-    .populate({ path: "subCategory", select: "name " })
-    .populate({ path: "brand", select: "name " });
+  this.populate({ path: "category", select: "name" })
+    .populate({ path: "subCategory", select: "name" })
+    .populate({ path: "brand", select: "name" });
     next();
 });
-
+function setImageUrl(doc) {
+  if (doc.images) {
+    doc.images = doc.images.map(
+      (image) => `${process.env.BASE_URL}/products/${image}`
+    );
+  }
+  if (doc.imageCover) {
+    doc.imageCover = `${process.env.BASE_URL}/products/${doc.imageCover}`;
+  }
+}
+productSchema.post("init", (doc) => {
+  setImageUrl(doc);
+});
+productSchema.post("save", (doc) => {
+  setImageUrl(doc);
+});
 const Product = mongoose.model("Product", productSchema);
 export default Product;

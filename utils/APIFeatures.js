@@ -64,7 +64,7 @@ export default class APIFeatures {
 
   paginate(countDocuments) {
     const page = Number(this.queryString.page) || 1;
-    const limit = Number(this.queryString.limit) || 5;
+    const limit = Number(this.queryString.limit) || 10;
     const skip = (page - 1) * limit;
     const numberOfPages = Math.ceil(countDocuments / limit);
     const endIndex = page * limit;

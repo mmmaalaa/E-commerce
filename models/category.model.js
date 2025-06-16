@@ -17,8 +17,8 @@ const categorySchema = new mongoose.Schema(
       unique: [true, "Category slug must be unique"],
     },
     image: {
-      type: String
-    }
+      type: String,
+    },
   },
   { timestamps: true }
 );
@@ -27,8 +27,21 @@ categorySchema.pre("save", function (next) {
   next();
 });
 categorySchema.pre("findOneAndUpdate", function (next) {
-  this.set({ slug: slugify(this.getUpdate().name, { lower: true, strict: true }) });
+  this.set({
+    slug: slugify(this.getUpdate().name, { lower: true, strict: true }),
+  });
   next();
+});
+function setImageUrl(doc) {
+  if (doc.image) {
+    doc.image = `${process.env.BASE_URL}/categories/${doc.image}`;
+  }
+}
+categorySchema.post("init", (doc) => {
+  setImageUrl(doc);
+});
+categorySchema.post("save", (doc) => {
+  setImageUrl(doc);
 });
 // categorySchema.index({ slug: 1 });
 

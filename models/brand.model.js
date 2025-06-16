@@ -30,6 +30,17 @@ brandSchema.pre("findOneAndUpdate", function (next) {
   this.set({ slug: slugify(this.getUpdate().name, { lower: true, strict: true }) });
   next();
 });
+function setImageUrl(doc) {
+  if (doc.image) {
+    doc.image = `${process.env.BASE_URL}/brands/${doc.image}`;
+  }
+}
+brandSchema.post("init", (doc) => {
+  setImageUrl(doc);
+});
+brandSchema.post("save", (doc) => {
+  setImageUrl(doc);
+});
 // brandSchema.index({ slug: 1 });
 
 const Brand = mongoose.model("brand", brandSchema);

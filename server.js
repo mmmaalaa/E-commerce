@@ -11,7 +11,10 @@ import globalError from "./middlewares/globalError.js";
 const app = express();
 
 dbConnection();
+// app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(`uploads`));
+
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
