@@ -6,14 +6,17 @@ import asyncHandler from "../utils/asyncHandler.js";
 import validationMiddleware from "../middlewares/validation.js";
 import {
   uploadMultipleImages,
-  uploadSingleImage,
 } from "../middlewares/uploadImageMiddleware.js";
+import { allowedTo, authentication } from "../middlewares/authentication.js";
+import { USER_ROLES } from "../models/user.model.js";
 
 const router = Router();
 
 router
   .route("/")
   .post(
+    authentication,
+    allowedTo(USER_ROLES.ADMIN),
     uploadMultipleImages([
       { name: "imageCover", maxCount: 1 },
       { name: "images", maxCount: 5 },
@@ -33,11 +36,15 @@ router
     asyncHandler(productService.getProduct)
   )
   .patch(
+    authentication,
+    allowedTo(USER_ROLES.ADMIN),
     productRules.updateRules,
     validationMiddleware,
     asyncHandler(productService.updateProduct)
   )
   .delete(
+    authentication,
+    allowedTo(USER_ROLES.ADMIN),
     productRules.deleteRules,
     validationMiddleware,
     asyncHandler(productService.deleteProduct)

@@ -5,6 +5,8 @@ import categoryRoutes from "./routes/category.route.js";
 import subcategoryRoutes from "./routes/subCategory.route.js";
 import productRoutes from "./routes/product.route.js";
 import BrandRoutes from "./routes/brand.route.js";
+import userRoutes from "./routes/user.route.js";
+import authRoutes from "./routes/auth.route.js";
 import apiError from "./utils/apiError.js";
 import globalError from "./middlewares/globalError.js";
 
@@ -23,6 +25,8 @@ app.use("/api/v1/categories", categoryRoutes);
 app.use("/api/v1/subcategories",subcategoryRoutes );
 app.use("/api/v1/brands",BrandRoutes );
 app.use("/api/v1/products",productRoutes );
+app.use("/api/v1/user",userRoutes );
+app.use("/api/v1/auth",authRoutes );
 app.use((req, res, next) => {
   next(new apiError("Not Found", 404));
 });

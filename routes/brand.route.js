@@ -4,12 +4,16 @@ import asyncHandler from "../utils/asyncHandler.js";
 import brandRules from "../services/brand/brand.validation.js";
 import validationMiddleware from "../middlewares/validation.js";
 import { uploadSingleImage } from "../middlewares/uploadImageMiddleware.js";
+import { allowedTo, authentication } from "../middlewares/authentication.js";
+import { USER_ROLES } from "../models/user.model.js";
 
 const router = Router();
 
 router
   .route("/")
   .post(
+    authentication,
+    allowedTo(USER_ROLES.ADMIN),
     uploadSingleImage("image"),
     brandService.resizeImage,
     brandRules.createBrand,
@@ -26,6 +30,8 @@ router
     asyncHandler(brandService.getBrand)
   )
   .patch(
+    authentication,
+    allowedTo(USER_ROLES.ADMIN),
     uploadSingleImage("image"),
     brandService.resizeImage,
     brandRules.updateBrand,
@@ -33,6 +39,8 @@ router
     asyncHandler(brandService.updateBrand)
   )
   .delete(
+    authentication,
+    allowedTo(USER_ROLES.ADMIN),
     brandRules.deleteBrand,
     validationMiddleware,
     asyncHandler(brandService.deleteBrand)
