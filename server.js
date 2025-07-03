@@ -7,6 +7,9 @@ import productRoutes from "./routes/product.route.js";
 import BrandRoutes from "./routes/brand.route.js";
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
+import reviewRoutes from "./routes/review.route.js";
+import wishlistRouter from "./routes/wishlist.route.js";
+import addressRouter from "./routes/address.route.js";
 import apiError from "./utils/apiError.js";
 import globalError from "./middlewares/globalError.js";
 
@@ -27,6 +30,9 @@ app.use("/api/v1/brands",BrandRoutes );
 app.use("/api/v1/products",productRoutes );
 app.use("/api/v1/user",userRoutes );
 app.use("/api/v1/auth",authRoutes );
+app.use("/api/v1/review",reviewRoutes );
+app.use("/api/v1/wishlist",wishlistRouter );
+app.use("/api/v1/address",addressRouter );
 app.use((req, res, next) => {
   next(new apiError("Not Found", 404));
 });

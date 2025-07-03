@@ -1,4 +1,3 @@
-import path from "path";
 import sharp from "sharp";
 import Brand from "../../models/brand.model.js";
 import {
@@ -19,12 +18,12 @@ export const resizeImage = async (req, res, next) => {
     .toFormat("jpeg")
     .jpeg({ quality: 90 })
     .toFile(`uploads/brands/${fileName}`);
-    req.body.image = fileName;
-    next();
+  req.body.image = fileName;
+  next();
 };
 export const createBrand = createOne(Brand);
 
-export const getAllBrands = getAll(Brand,"Brand");
+export const getAllBrands = getAll(Brand, "Brand");
 
 export const getBrand = getOne(Brand);
 

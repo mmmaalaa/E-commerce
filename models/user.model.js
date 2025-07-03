@@ -40,6 +40,22 @@ const userSchema = new Schema(
     },
     phone: String,
     profilePicture: String,
+    wishlist: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Product",
+      },
+    ],
+    addresses:[
+      {
+        id: Schema.Types.ObjectId,
+        alias: String,
+        details: String,
+        phone: String,
+        city: String,
+        postalCode: String
+      }
+    ]
   },
   { timestamps: true }
 );
@@ -53,15 +69,22 @@ userSchema.pre("save",async function (next) {
 });
 userSchema.pre("findOneAndUpdate", async function (next) {
   const update = this.getUpdate();
+
+
+  if (!update.password && !update.username) return next();
+
   if (update.password) {
     update.password = await hashPassword(update.password);
   }
+
   if (update.username) {
     update.slug = slugify(update.username, { lower: true, strict: true });
   }
+
   this.set(update);
   next();
 });
+
 
 const User = model("User", userSchema);
 export default User;

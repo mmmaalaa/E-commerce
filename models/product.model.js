@@ -80,24 +80,36 @@ const productSchema = new mongoose.Schema(
       default: 0,
     },
   },
-  { timestamps: true }
+  { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
+
+productSchema.virtual("reviews", {
+  ref: "Review",
+  foreignField: "product",
+  localField: "_id",
+});
 productSchema.pre("save", function (next) {
   this.slug = slugify(this.title, { lower: true, strict: true });
   next();
 });
 productSchema.pre("findOneAndUpdate", function (next) {
-  this.set({
-    slug: slugify(this.getUpdate().title, { lower: true, strict: true }),
-  });
+  const update = this.getUpdate();
+
+  if (update?.title) {
+    update.slug = slugify(update.title, { lower: true, strict: true });
+    this.set(update);
+  }
+
   next();
 });
+
+
 
 productSchema.pre(/^find/, function (next) {
   this.populate({ path: "category", select: "name" })
     .populate({ path: "subCategory", select: "name" })
     .populate({ path: "brand", select: "name" });
-    next();
+  next();
 });
 function setImageUrl(doc) {
   if (doc.images) {

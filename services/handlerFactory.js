@@ -20,7 +20,7 @@ export const updateOne = (Model) => async (req, res, next) => {
   if (!document) {
     return next(new apiError(`document with ID not found`, 404));
   }
-
+  document.save();
   return res.status(200).json({
     status: "success",
     data: {
@@ -29,9 +29,12 @@ export const updateOne = (Model) => async (req, res, next) => {
   });
 };
 
-export const getOne = (Model) => async (req, res, next) => {
-  const document = await Model.findById(req.params.id);
-
+export const getOne = (Model, options) => async (req, res, next) => {
+  let query = Model.findById(req.params.id);
+  if (options) {
+    query = query.populate(options);
+  }
+  const document = await query;
   if (!document) {
     return next(new apiError(`No document found with that ID`, 404));
   }

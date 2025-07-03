@@ -49,7 +49,7 @@ export const createProduct = createOne(Product, {
 
 export const getAllProducts = getAll(Product, "Product");
 
-export const getProduct = getOne(Product);
+export const getProduct = getOne(Product, "reviews");
 
 export const updateProduct = updateOne(Product);
 

@@ -9,9 +9,11 @@ import {
 } from "../middlewares/uploadImageMiddleware.js";
 import { allowedTo, authentication } from "../middlewares/authentication.js";
 import { USER_ROLES } from "../models/user.model.js";
+import reviewRouter from "./review.route.js"; // Import the review router
 
 const router = Router();
 
+router.use("/:productId/reviews", reviewRouter);
 router
   .route("/")
   .post(
