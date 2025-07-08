@@ -37,7 +37,6 @@ export const removeFromWishList = async (req, res, next) => {
       message: "Product removed from wishlist",
       data: user.wishlist,
     },
-    { new: true, runValidators: true }
   );
 };
 

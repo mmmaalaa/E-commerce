@@ -55,7 +55,8 @@ const userSchema = new Schema(
         city: String,
         postalCode: String
       }
-    ]
+    ],
+    usedCoupons: [{ type: Schema.Types.ObjectId, ref: 'Coupon' }]
   },
   { timestamps: true }
 );
