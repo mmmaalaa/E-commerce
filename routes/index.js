@@ -9,6 +9,7 @@ import wishlistRouter from "./wishlist.route.js";
 import addressRouter from "./address.route.js";
 import couponRouter from "./coupon.route.js";
 import cartRouter from "./cart.route.js";
+import orderRouter from "./order.route.js";
 
 const routes = (app)=>{
   app.use("/api/v1/categories", categoryRoutes);
@@ -22,6 +23,7 @@ const routes = (app)=>{
   app.use("/api/v1/address", addressRouter);
   app.use("/api/v1/coupon", couponRouter);
   app.use("/api/v1/cart", cartRouter);
+  app.use("/api/v1/order", orderRouter);
 }
 
 export default routes

@@ -169,9 +169,10 @@ export const applyCoupon = async (req, res, next) => {
   }
 
   // Check if coupon already applied
-  if (cart.appliedCoupon) {
+  if (cart.appliedCoupon.toString() === coupon._id.toString()) {
     return next(new apiError("A coupon is already applied to this cart", 400));
   }
+
 
   // Calculate discount
   const discountAmount = Math.round((cart.totalPrice * coupon.discount) / 100);
